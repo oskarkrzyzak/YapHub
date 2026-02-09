@@ -1,0 +1,56 @@
+documentation/database/database-design.md
+
+# DataBase design - YapHub
+This is a database model a simple media platform where a user/users can create posts and upload them and follow other users.
+
+##Entities
+
+### Users
+The Users entity is where the information is stored about each of every user on the platform.
+
+Attributes:
+- user_id - unique identifier for each user
+- username - unique username
+- password_hash - hashed password for authentication in the login
+- first_name - user's first name
+- last_name - user's last name
+- birthday - users date of birth
+
+----------
+
+### Posts
+The posts entity is where the content is stored when the user creates one.
+
+Attributes:
+- post_id - unique identifier for each post
+- content - the text section for the post
+- created_at - a timestamp of when the post was made
+- expires_at - a timestamp of the expiration
+
+--------
+
+RelationShips 
+
+### Writes 
+The Writes relationship is connected users and posts.
+
+- One User can write many posts
+- Each post is then written by ONE user
+
+this is where the one to many relationship comes from.
+
+Foreign key:
+- post,user_id connects to User, user_id.
+
+----------
+
+### Follows
+The follows relationship is a self made relationship from the entity 'users'.
+- User can follow 'many' users
+- User can be followed by 'many' users
+
+These are then stroed into the Follows table inn the relational schema where ypu can see i posted an image of 
+
+
+----------
+
