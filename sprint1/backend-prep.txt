@@ -1,0 +1,16 @@
+What you are responsible for in Sprint 1?
+    I'm responsible for creating the user creation feature for website, implement and test the login feature, and creating a local server.
+2. Setup steps
+    I need to create the node.js that allows the user to create their account in YapHub and then save the information the user created in the database. Return error or success message displaying the functionality of the feature.
+    Implement a login and allow the user to login with the information they have created in the database. If successful, it would login the user and take them to the home page of YapHub. If unsuccessful, it would return a login error to the user.
+    Need to figure out how to create a local server in my end to get the website running.
+
+3. Development plan
+    I have VSC already installed, I need to look into the previous labs for assistance of code or researching how to implement coding for the backend.
+    Some file I expect to create is a server javascript to build my cards.
+    Also need to research how to create a local server for the website. 
+    Done looks like having a server created and running, being allowed to create user and saving the user info to DB, and being able to login the user.
+
+4. Risks or questions
+    Issues I may run into is the server not running, password hashing, or connection Issues.
+    I need from my teammates is the database created and having the pages or user fields ready.
