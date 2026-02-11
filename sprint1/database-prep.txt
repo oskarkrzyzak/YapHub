@@ -1,0 +1,53 @@
+Sprint 1 – Database Prep
+
+Name: Nawar Almuohi
+Section/Responsibility: Database
+
+1. Sprint 1 Responsibilities
+For Sprint 1, I am responsible for the database-related tasks.
+The Trello cards I own are:
+- Convert ERD into database schema
+- Create tables and insert test data
+- Write core database queries for Sprint 1
+
+My goal is to set up a working database structure that the backend
+can connect during this sprint.
+
+2. Setup Steps
+1. Install MySQL locally on my machine.
+2. Install MySQL Workbench.
+3. Create a local MySQL database for the project.
+4. Create SQL files to store table creation and test data.
+5. Run the SQL files to make sure the database works correctly.
+
+Tools used:
+- MySQL
+- MySQL Workbench
+- GitHub
+
+3. Development Plan
+Step 1: Look at the ERD provided by the team.
+Step 2: Identify the tables and columns needed.
+Step 3: Write CREATE TABLE statements in SQL.
+Step 4: Add primary keys and foreign keys.
+Step 5: Insert sample test data into each table.
+Step 6: Write basic SELECT queries needed for Sprint 1.
+Step 7: Test all SQL commands in MySQL Workbench.
+
+Files I expect to work on:
+- database/schema.sql
+- database/seed.sql
+- database/queries.sql
+
+Done means:
+- Tables are created successfully
+- Test data is inserted without errors
+- Queries run and return correct results
+
+4. Risks or Questions
+- Changes to the ERD may require updates to the tables.
+- Need confirmation from backend on required fields.
+- Need team agreement on table and column names.
+
+
+
