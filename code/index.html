@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YapHub - Login & Signup</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header>
+        <nav>
+            <img src="../images/logo.png" alt="YapHub Logo" class="logo">
+            <div class="nav-login">
+                <input type="email" placeholder="Email">
+                <input type="password" placeholder="Password">
+                <button>Log In</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Left Section -->
+        <div class="left-section">
+            <div class="description">
+                <h1>YapHub</h1>
+                <p>helps users share short posts<br>and connect with others in real time.</p>
+                <p>All content disappears after 24 hours,<br>encouraging spontaneous and pressure-free interaction.</p>
+            </div>
+        </div>
+
+        <!-- Right Section -->
+        <div class="right-section">
+            <form class="signup-form">
+                <h2>Sign Up</h2>
+                <p class="subtitle">It's free and always will be.</p>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstname">First name</label>
+                        <input type="text" id="firstname" placeholder="" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastname">Last name</label>
+                        <input type="text" id="lastname" placeholder="" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="nickname">Nickname</label>
+                    <input type="text" id="nickname" placeholder="" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="" required>
+                </div>
+
+                <button type="submit" class="submit-btn">Create Account</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
