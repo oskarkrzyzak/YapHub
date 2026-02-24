@@ -1,0 +1,80 @@
+SPRINT 1 – FRONTEND PREP (YapHub)
+Name: Oskar Krzyżak
+Branch: oskarDev
+
+1) What I am responsible for in Sprint 1 
+- Build login & signup screen
+- Implement interactive UI buttons
+- Create home feed layout
+
+2) Setup steps
+
+1. Install Git
+2. Install a code editor (VS Code recommended)
+3. Clone the team repository:
+   git clone https://github.com/oskarkrzyzak/YapHub.git
+4. Open the project folder in VS Code
+5. Create and switch to my branch:
+   git checkout -b oskarDev
+6. Create frontend folder structure if not present:
+   /frontend
+   /frontend/css
+   /frontend/js
+7. Create base files:
+   index.html
+   style.css
+   script.js
+8. Open index.html in browser to test UI locally
+
+3) Development plan
+
+Card 1: Build login & signup screen
+- Create login/signup layout in index.html
+- Add input fields (email/username, password)
+- Add buttons for login and signup
+- Add basic JavaScript validation (prevent empty submit)
+- Clicking login navigates to Home Feed (temporary UI navigation)
+
+Files:
+frontend/index.html
+frontend/css/style.css
+frontend/js/script.js
+
+Done:
+Login/signup screen displays correctly and buttons navigate to the feed
+
+Card 2: Implement interactive UI buttons
+- Add clickable buttons across main screens
+- Buttons show hover and click feedback
+- Login/signup buttons trigger navigation
+- Like/comment buttons appear on posts
+- Buttons perform placeholder UI actions
+
+Files:
+frontend/index.html
+frontend/js/script.js
+frontend/css/style.css
+
+Done:
+All major buttons respond visually and trigger UI behavior
+
+Card 3: Create home feed page layout
+	•	Create an empty Feed page section
+	•	Add basic layout structure (header + content area)
+	•	Ensure Feed screen is reachable from navigation
+	•	No posts or functionality required yet
+
+Files:
+frontend/index.html
+frontend/css/style.css
+
+Done:
+Feed page exists and loads correctly through navigation
+
+4) Risks / questions
+
+- Frontend structure must match backend and database
+- Need confirmation on folder structure
+- Need agreement on how data will be passed between frontend and backend
+
+
