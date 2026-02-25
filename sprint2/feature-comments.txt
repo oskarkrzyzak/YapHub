@@ -1,0 +1,187 @@
+CMPSC 390 – Lab 4
+Sprint 2 Planning: Vertical Feature Ownership
+Purpose of This Lab
+Today is planning only.
+You are not building the feature yet.
+You are designing, scoping, and committing to a vertical feature you will fully own in Sprint 2.
+By the end of class you will:
+* Define one independently demoable vertical feature
+* Scope it realistically
+* Write a complete feature brief
+* Create a Sprint 2 Trello feature card
+* Open a planning Pull Request
+This is the official transition from layer teams to full stack feature ownership.
+________________
+
+
+Learning Objective
+You will move from:
+Sprint 1
+Frontend team
+Backend team
+Database team
+To:
+Sprint 2
+Each developer owns one complete feature
+Each feature touches multiple layers
+Each feature can be demoed independently
+No shared ownership.
+No partial layers.
+No dependency chains.
+
+
+Part 1: Feature Definition
+As a team, each team member must define:
+1. Feature Name -- (Comments on a post)
+
+2. User Story -- as a user I would like to comment on a post so that I can respond to what someone shared.
+Format:
+
+
+3. Why this adds value to the project
+Comments would bring interactions on posts and make YapHub feel like a real social platform
+
+
+4. What layers it touches:
+The layers this would include are UI, Backend, and Database
+
+
+Constraints
+* No duplicate features
+* No shared features
+* No “this only works if their feature works”
+* Must be demoable alone
+If your feature depends on another feature, it is invalid.
+
+
+
+
+
+
+
+
+
+
+Part 2: Feature Brief Documentation
+On your personal branch:
+nameDev
+Create:
+sprint2
+Inside that folder:
+feature-[shortname].txt
+Example:
+feature-password-reset.txt
+feature-admin-approval.txt
+Each person creates their own document on their own branch.
+Your Feature Document Must Include
+
+1. Problem Statement
+What problem does this solve? YapHub right now has users, posts, and follows, but posts doesnt have any interactions.
+This feature will add comments so users can submit a comment on any post and look at already existing comments.
+Comments should be saved into the database and still be seem even after reloads.
+
+
+
+
+2. User Flow
+Step by step from start to finish
+-User opens a comment page for a post.
+-Comments that already exist for that post is being displayed.
+-User will type a comment and click submit
+-Frontend will send the comment to Backend
+-Backedn will make sure the the input is good and inserts the comment into the database
+-Frontend reloads the comment section and shows the new comment
+-reloading the comment page still shows the comment.
+
+
+
+3. Technical Plan
+Frontend changes
+-Creates a simple comment page with a comments list and the comment form
+-Uses a placeholder values for the demo
+-After submitting it refreshes the comments list
+
+Backend routes
+-GET/posts post_id/comments will return all comments for a post
+-POST /comments will create a new comment
+
+Database changes
+- Create a new comments table
+-Inserting test comments for the demo
+
+Files expected to be created or modified
+-The backend server file adding GET and POST route
+-Frontend file in the code folder will have comments page and javascript
+-Database will have a CREATE TABLE comments and have test INSERT statements
+
+4. API Changes
+New routes
+Modified routes
+Request and response structure
+
+-GET/posts post_id/comments
+-post_id comes from the URL
+-returning a list of comments for that post
+
+to get the comment
+-POST /comments
+ -takes the post_id, user_id, and the content from the form
+ -Makes a success message if the comment has been saved
+ -gives an error if something is missing
+
+
+5. Database Changes
+New tables
+Schema updates
+New fields
+
+Creating a new table called comments
+-The fields in the table
+ - comment_id
+ - post_id
+ - user_id
+ - content (the text in the comment)
+ - created_at (date of when the comment was made)
+
+
+6. Acceptance Criteria
+Clear definition of done
+Must be testable
+Example:
+   * User can submit form
+   * Data saves in database
+   * Reload shows persisted data
+   * Error handling works
+   * Feature can be demoed without another feature
+If it cannot be demoed independently, it is not scoped correctly.
+
+///
+- Comments table is existing with a FK to posts and users
+- Users can submit a comment from the UI
+- Submitting creates a new row in the comments table.
+- GET route returns comments for a post and UI displays them.
+- Reload shows the comments are still going.
+- Empty comments are rejected with errors
+- Feature can be demoed independently while using a placeholder post_id and user_id
+  with the test data
+
+
+
+
+Part 3: Trello Sprint 2 Setup
+Each team member must:
+   * Create One/Multiple Sprint 2 Feature card
+   * Assign themselves as owner
+   * Break into checklist tasks
+Checklist must include:
+   * UI tasks
+   * Backend tasks
+   * Database tasks
+   * Testing tasks
+OR
+You can create a card for each one and assign yourself to it
+
+
+
+
+Submission: EACH PERSON in your group upload your feature-[shortname].txt file to Canvas.
