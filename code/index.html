@@ -11,11 +11,14 @@
     <header>
         <nav>
             <img src="../images/logo.png" alt="YapHub Logo" class="logo">
+            <form id="loginForm" action="/login">
             <div class="nav-login">
-                <input type="email" placeholder="Email">
-                <input type="password" placeholder="Password">
-                <button id="loginBtn">Log In</button>
+                <input type="email" name="email" placeholder="Email">
+                <input type="password" name="password" placeholder="Password">
+                <button>Log In</button>
             </div>
+        </form>
+        <p id="loginResult"></p>
         </nav>
     </header>
 
@@ -32,40 +35,88 @@
 
         <!-- Right Section -->
         <div class="right-section">
-            <form id="signupForm" class="signup-form">
+            <form id="newUserForm" class="signup-form" action="/create-user">
                 <h2>Sign Up</h2>
                 <p class="subtitle">It's free and always will be.</p>
 
                 <div class="form-row">
                     <div class="form-group">
                         <label for="firstname">First name</label>
-                        <input type="text" id="firstname" placeholder="" required>
+                        <input type="text" name="first_name" placeholder="" required>
                     </div>
                     <div class="form-group">
                         <label for="lastname">Last name</label>
-                        <input type="text" id="lastname" placeholder="" required>
+                        <input type="text" name="last_name" placeholder="" required>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="nickname">Nickname</label>
-                    <input type="text" id="nickname" placeholder="" required>
+                    <input type="text" name="nickname" placeholder="" required>
                 </div>
 
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" id="email" placeholder="" required>
+                    <input type="email" name="email" placeholder="" required>
                 </div>
 
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" id="password" placeholder="" required>
+                    <input type="password" name="password" placeholder="" required>
                 </div>
 
                 <button type="submit" class="submit-btn">Create Account</button>
             </form>
         </div>
     </div>
+    <p id="newUserResult"></p>
     <script src="js/script.js"></script>
 </body>
+
+<script>
+    //getting userForm and userResult from HTML
+    const newUserForm = document.getElementById('newUserForm');
+    const newUserResult = document.getElementById('newUserResult');
+    //form submission
+    newUserForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+    try {
+    //send POST request to /create-user route from user input
+    const formData = new FormData(newUserForm);
+    const res = await fetch('/create-user', {
+      method: 'POST',
+      body: new URLSearchParams(formData)
+        })
+    //if response is successful then redirects user to home html
+    //else shows alert saying invalid user creation  
+     if (res.ok) {
+        window.location.href = '/home.html'; } 
+    else { alert('User creation failed'); }
+     } catch (err) {
+    newUserResult.textContent = 'Error contacting server';
+        } } ); 
+
+    //getting loginForm and loginResult from HTML
+    const loginForm = document.getElementById('loginForm');
+    const loginResult = document.getElementById('loginResult');
+    //form submission
+    loginForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+    try {
+    //send POST request to /login route from user input
+    const formData = new FormData(loginForm);
+    const res = await fetch('/login', {
+      method: 'POST',
+      body: new URLSearchParams(formData)
+    });
+    //if login is successful, redirect user to home html
+    //else show alert saying invalid email and pw
+    const data = await res.json();
+    if (data.success) {
+        window.location.href = '/home.html'; } 
+    else { alert('Invalid email or password'); } }
+    catch(err) {
+        newUserResult.textContent = 'Error contacting server';
+    } }); 
+</script>
 </html>
