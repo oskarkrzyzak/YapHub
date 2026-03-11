@@ -17,7 +17,7 @@ app.use('/images', express.static('images'));
 const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'password',
+  password: 'marwip777',
   database: 'yaphub'
 });
 
@@ -100,6 +100,47 @@ app.post('/login', (req, res) => {
     }
 
     return res.status(401).json({ success: false, message: 'Invalid credentials' });
+  });
+});
+
+// POST /posts - Create a new post
+app.post('/posts', (req, res) => {
+  const { user_id, content } = req.body;
+
+  if (!user_id || !content) {
+    return res.status(400).json({ success: false, message: 'Missing user_id or content' });
+  }
+
+  const sql = `
+    INSERT INTO posts (user_id, content, created_at, expires_at)
+    VALUES (?, ?, NOW(), DATE_ADD(NOW(), INTERVAL 1 DAY))
+  `;
+
+  db.query(sql, [user_id, content], (err) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ success: false, message: 'Database error' });
+    }
+    return res.json({ success: true });
+  });
+});
+
+// GET /posts - Retrieve non-expired posts
+app.get('/posts', (req, res) => {
+  const sql = `
+    SELECT posts.post_id, posts.content, posts.created_at, posts.expires_at, users.nickname
+    FROM posts
+    JOIN users ON posts.user_id = users.user_id
+    WHERE posts.expires_at > NOW()
+    ORDER BY posts.created_at DESC
+  `;
+
+  db.query(sql, (err, results) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ success: false, message: 'Database error' });
+    }
+    return res.json(results);
   });
 });
 
