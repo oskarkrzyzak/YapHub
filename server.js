@@ -59,7 +59,6 @@ app.post('/create-user', (req, res) => {
   db.query(sql, [first_name, last_name, nickname, email, hashedPassword], (err) => {
     if (err) {
       console.error(err);
-      // Duplicate email/nickname
       if (err.code === 'ER_DUP_ENTRY') {
         return res.status(409).json({ success: false, message: 'Email or nickname already exists' });
       }
@@ -144,28 +143,32 @@ app.get('/posts', (req, res) => {
   });
 });
 
-
-/// GET /posts/:post_id/comments - Get comments for a post
+// GET comments for a post
 app.get('/posts/:post_id/comments', (req, res) => {
   const postId = req.params.post_id;
 
-  const sql = "SELECT * FROM comments WHERE post_id = ?";
+  const sql = `
+    SELECT *
+    FROM comments
+    WHERE post_id = ?
+    ORDER BY comment_id ASC
+  `;
 
   db.query(sql, [postId], (err, results) => {
     if (err) {
       console.error(err);
-      return res.status(500).send("Database error");
+      return res.status(500).send('Database error');
     }
     res.json(results);
   });
 });
 
-// POST /comments - Add a new comment
+// POST a new comment
 app.post('/comments', (req, res) => {
   const { post_id, user_id, content } = req.body;
 
   if (!post_id || !user_id || !content || content.trim() === '') {
-    return res.status(400).json({ success: false, message: 'Missing or empty fields' });
+    return res.status(400).json({ success: false, message: 'Missing fields' });
   }
 
   const sql = `
@@ -173,16 +176,16 @@ app.post('/comments', (req, res) => {
     VALUES (?, ?, ?, NOW())
   `;
 
-  db.query(sql, [post_id, user_id, content.trim()], (err) => {
+  db.query(sql, [post_id, user_id, content], (err, results) => {
     if (err) {
       console.error(err);
       return res.status(500).json({ success: false, message: 'Database error' });
     }
-    return res.json({ success: true });
+
+    return res.json({ success: true, comment_id: results.insertId });
   });
 });
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });
-
